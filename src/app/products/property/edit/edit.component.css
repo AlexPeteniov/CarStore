@@ -1,0 +1,1 @@
+label.required:after{  color: red;  content: " *";}input.ng-invalid.ng-touched {  border: 1px solid red;}

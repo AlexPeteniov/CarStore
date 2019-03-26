@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="col-12">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="form-group row mt-4">
+        <div class="col-sm-8"></div>
+        <div class="col-sm-2">
+          <a class="btn btn-danger btn-block" routerLink="/property">Вернуться</a>
+        </div>
+        <div class="col-sm-2">
+          <button
+            class="btn btn-success"
+            type="submit"
+            [disabled]="!f.valid">Сохранить</button>
+        </div>
+      </div>
+      <hr>
+      <h4>Добавление свойства</h4>
+      <hr>
+        <div class="form-group row">
+          <label class="control-label required col-sm-12 col-form-label" for="name">Название свойства</label>
+          <br>
+          <div class="col-sm-3">
+            <input type="textte"
+                   class="form-control"
+                   id="name"
+                   placeholder="Цвет Авто"
+                   ngModel
+                   name="name"
+                   required>
+          </div>
+        </div>
+      <hr>
+        <fieldset class="form-group">
+          <div class="row">
+            <label class="control-label required col-form-label col-sm-12  pt-0" for="type">Укажите тип свойства</label>
+            <br>
+            <div class="col-sm-6">
+              <div class="form-check">
+                <input class="form-check-input"
+                       type="radio"
+                       name="type"
+                       id="type"
+                       value="DropDown"
+                       ngModel
+                       checked>
+                <label class="form-check-label" for="type2">
+                  DropDown
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input"
+                       type="radio"
+                       name="type"
+                       id="type2"
+                       value="Number"
+                       ngModel>
+                <label class="form-check-label" for="type2">
+                  Number
+                </label>
+              </div>
+              <div class="form-check disabled">
+                <input class="form-check-input"
+                       type="radio"
+                       name="type"
+                       id="type3"
+                       value="String"
+                       ngModel>
+                <label class="form-check-label" for="type3">
+                  String
+                </label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,82 @@
+<div class="row">
+  <div class="col-12">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="form-group row mt-4">
+        <div class="col-sm-8"></div>
+        <div class="col-sm-2">
+          <a class="btn btn-danger btn-block" routerLink="/products">Вернуться</a>
+        </div>
+        <div class="col-sm-2">
+          <button
+            class="btn btn-success"
+            type="submit"
+            [disabled]="!f.valid"
+            (click)="onSubmit()">Сохранить</button>
+        </div>
+      </div>
+      <hr>
+      <h4>Добавление товара</h4>
+      <hr>
+      <div class="form-group row">
+        <label class="control-label required col-sm-12 col-form-label" for="name">Название товара</label>
+        <br>
+        <div class="col-sm-3">
+          <input type="email"
+                 class="form-control"
+                 id="name"
+                 placeholder="Mersedes s554"
+                 name="name"
+                 ngModel
+                 required>
+        </div>
+      </div>
+      <hr>
+      <div class="form-group row">
+        <label class="control-label required col-sm-12 col-form-label" for="price">Стоимость товара</label>
+        <br>
+        <div class="col-sm-3">
+          <input type="email"
+                 class="form-control"
+                 id="price"
+                 placeholder="32 155"
+                 name="price"
+                 ngModel
+                 required>
+        </div>
+      </div>
+      <hr>
+      <div class="form-group row">
+        <label class="control-label required col-sm-12 col-form-label" for="image">Изображение товара</label>
+        <br>
+        <div class="col-sm-3" >
+          <div class="input-group">
+            <input type="email"
+                   class="form-control"
+                   id="image"
+                   placeholder='image'
+                   name="dataAdd"
+                   ngModel
+                   required
+                   >
+            <span><i class="fas fa-download fa-2x pl-2"></i></span>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="form-group row">
+        <label class="control-label required col-sm-12 col-form-label" >Описание</label>
+        <textarea class="form-control col-sm-6"
+                  id="example"
+                  rows="5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias at atque dignissimos excepturi impedit ipsum natus nemo perferendis quidem repellat sequi, sunt voluptate voluptatibus! Aspernatur iusto quam rem tenetur voluptatem!
+        </textarea>
+      </div>
+      <hr>
+      <div class="form-group row">
+      <label class="control-label required col-sm-12 col-form-label" >
+        Добавленные свойства
+      </label>
+      </div>
+    </form>
+  </div>
+</div>
+
