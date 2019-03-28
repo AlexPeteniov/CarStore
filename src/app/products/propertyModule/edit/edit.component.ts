@@ -4,7 +4,7 @@ import {
   ViewChild
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Property } from '../../../shared/property.model';
+import { Property } from '../property.model';
 import { PropertyService } from '../property.service';
 import { Router, ActivatedRoute } from '@angular/router';
 

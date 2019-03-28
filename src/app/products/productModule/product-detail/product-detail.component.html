@@ -6,9 +6,20 @@
     <h1>{{product.name}}</h1>
   </div>
 </div>
-
 </a>
 
+<div class="row">
+  <div class="btn-group" appDropdown>
+    <button
+       type="button"
+       class="btn btn-primary dropdown-toggle">
+      Manage <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a>Save Data</a></li>
+      <li><a>Fetch Data</a></li>
+    </ul>
+  </div>
+</div>
 <!--
 <div class="row">
   <div class="col-xs-12">
@@ -42,8 +53,8 @@
     <ul class="list-group">
       <li
         class="list-group-item"
-        *ngFor="let property of propertys">
-        {{ property.name }} - {{ property.amount }}
+        *ngFor="let propertyModule of propertys">
+        {{ propertyModule.name }} - {{ propertyModule.amount }}
       </li>
     </ul>
   </div>

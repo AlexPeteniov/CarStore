@@ -1,8 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import {PropertyService} from './property.service';
-import { Property} from '../../shared/property.model';
+import { Property} from './property.model';
+import { Subscription } from 'rxjs/Subscription';
+
 
 
 @Component({
@@ -10,13 +12,23 @@ import { Property} from '../../shared/property.model';
   templateUrl: './property.component.html',
   styleUrls: ['./property.component.css']
 })
-export class PropertyComponent implements OnInit {
+export class PropertyComponent implements OnInit, OnDestroy {
   propertys: Property[];
+  private subscription: Subscription;
   constructor(private propertyService: PropertyService,
               private router: Router,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.subscription = this.propertyService.propertysChanged
+      .subscribe(
+        (propertys: Property[]) => {
+          this.propertys = propertys;
+        }
+      );
     this.propertys = this.propertyService.getPropertys();
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }
