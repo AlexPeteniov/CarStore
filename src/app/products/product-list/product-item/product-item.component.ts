@@ -9,14 +9,14 @@ import {ProductService} from '../../product.service';
   styleUrls: ['./product-item.component.css']
 })
 export class ProductItemComponent implements OnInit {
+
   @Input() product: Product;
   @Input() index: number;
-  products: Product[] = [];
   constructor( private productService: ProductService) { }
   ngOnInit() {
-          this.product = this.productService.getProduct(this.index);
-          }
-  onDeleteProduct() {
+    this.product = this.productService.getProduct(this.index);
+    }
+  onDeleteproduct() {
     this.productService.deleteProduct(this.index);
   }
 

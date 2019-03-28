@@ -14,17 +14,11 @@ export class ProductDetailComponent implements OnInit {
   id: number;
 
   constructor(private productService: ProductService,
-              private route: ActivatedRoute,
-              private router: Router) {
-  }
-  ngOnInit() {
-    this.route.params
-      .subscribe(
-        (params: Params) => {
-          this.id = +params['id'];
-          this.product = this.productService.getProduct(this.id);
-        }
-      );
+              private route: ActivatedRoute) {
   }
 
+  ngOnInit() {
+       this.id = this.route.snapshot.params['id'];
+       this.product = this.productService.getProduct(this.id);
+  }
 }

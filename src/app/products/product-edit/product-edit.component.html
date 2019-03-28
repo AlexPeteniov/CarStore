@@ -10,8 +10,7 @@
           <button
             class="btn btn-success"
             type="submit"
-            [disabled]="!f.valid"
-            (click)="onSubmit()">Сохранить</button>
+            [disabled]="!f.valid">Сохранить</button>
         </div>
       </div>
       <hr>
@@ -46,15 +45,15 @@
       </div>
       <hr>
       <div class="form-group row">
-        <label class="control-label required col-sm-12 col-form-label" for="image">Изображение товара</label>
+        <label class="control-label required col-sm-12 col-form-label" for="dateAdd">Изображение товара</label>
         <br>
         <div class="col-sm-3" >
           <div class="input-group">
             <input type="email"
                    class="form-control"
-                   id="image"
+                   id="dateAdd"
                    placeholder='image'
-                   name="dataAdd"
+                   name="dateAdd"
                    ngModel
                    required
                    >
