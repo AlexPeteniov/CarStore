@@ -3,14 +3,16 @@
     <a class="btn btn-warning" routerLink="/products/new">+ Добавить товар</a>
   </div>
 </div>
-<div class="row">
-  <div class="col-12  mt-2">
-    <div class="d-inline-block col-8" appDropdown #r="appDropdown">
+
+    <div class="d-inline-block " appDropdown #r="appDropdown">
       <a class="dropdown-toggle"
-         data-toggle="dropdown">Перечень товаров
+         data-toggle="dropdown"
+         style="cursor: pointer">Перечень товаров
         <span class="caret"></span></a>
 
-      <ul class=" dropdown-menu col-12 mt-3 " [ngClass]="{'hide':r.isOpen}"  >
+      <ul class=" dropdown-menu  col-10 mt-3 "
+          [ngClass]="{'hide':r.isOpen}"
+          ng-click="event.stopPropagation()"  >
         <li class="">
           <app-product-item
           *ngFor="let productEl of products; let i=index"
@@ -18,13 +20,10 @@
           [index]="i">
         </app-product-item></li>
       </ul>
-    </div>
-    <div class="d-inline-block col-2 ">
+    <div class="d-inline-block ">
       <p>Стоимость</p>
     </div>
-    <div class="d-inline-block col-2  ">
+    <div class="d-inline-block ">
       <p>Дата изменения</p>
     </div>
-
-  </div>
 </div>

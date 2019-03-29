@@ -19,6 +19,7 @@ import {ProductEditComponent} from './products/productModule/product-edit/produc
 import {StartComponent} from './products/start/start.component';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {ProductService} from './products/productModule/product.service';
+import {ClickStopPropagationDirective} from './shared/cickStopPropagation';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {ProductService} from './products/productModule/product.service';
     DropdownDirective,
     EditComponent,
     ProductEditComponent,
-    StartComponent
+    StartComponent,
+    ClickStopPropagationDirective
   ],
   imports: [
     BrowserModule,
