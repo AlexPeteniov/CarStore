@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { Product } from '../product.model';
 import { ProductService } from '../product.service';
-
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-product-detail',
@@ -12,6 +12,7 @@ import { ProductService } from '../product.service';
 export class ProductDetailComponent implements OnInit {
   product: Product;
   id: number;
+  @ViewChild('r') pForm: NgForm;
 
   constructor(private productService: ProductService,
               private route: ActivatedRoute) {
@@ -21,4 +22,4 @@ export class ProductDetailComponent implements OnInit {
        this.id = this.route.snapshot.params['id'];
        this.product = this.productService.getProduct(this.id);
   }
-}
+ }

@@ -1,28 +1,30 @@
-<div class="row">
-  <div class="float-left col-9 mt-2" >
-    <div class="d-inline-block col-5 " appDropdown>
-      <h5 class="dropdown-toggle">Перечень товаров
-        <span class="caret"></span></h5>
-    </div>
-    <div class="d-inline-block col-2 pl-3">
-      <p>Стоимость</p>
-    </div>
-    <div class="d-inline-block col-3 pl-5">
-      <p>Дата изменения</p>
-    </div>
+<div class="col-2 mt-3 ml-auto">
+  <div class="row justify-content-end">
+    <a class="btn btn-warning" routerLink="/products/new">+ Добавить товар</a>
   </div>
 </div>
 <div class="row">
-  <div class="col-10 mt-3">
-    <app-product-item
-      *ngFor="let productEl of products; let i=index"
-      [product]="productEl"
-      [index]="i">
-    </app-product-item>
-  </div>
-  <div class="col-2 mt-3">
-    <div class="row justify-content-end">
-      <a class="btn btn-warning" routerLink="/products/new">+ Добавить товар</a>
+  <div class="col-12  mt-2">
+    <div class="d-inline-block col-8" appDropdown #r="appDropdown">
+      <a class="dropdown-toggle"
+         data-toggle="dropdown">Перечень товаров
+        <span class="caret"></span></a>
+
+      <ul class=" dropdown-menu col-12 mt-3 " [ngClass]="{'hide':r.isOpen}"  >
+        <li class="">
+          <app-product-item
+          *ngFor="let productEl of products; let i=index"
+          [product]="productEl"
+          [index]="i">
+        </app-product-item></li>
+      </ul>
     </div>
+    <div class="d-inline-block col-2 ">
+      <p>Стоимость</p>
+    </div>
+    <div class="d-inline-block col-2  ">
+      <p>Дата изменения</p>
+    </div>
+
   </div>
 </div>

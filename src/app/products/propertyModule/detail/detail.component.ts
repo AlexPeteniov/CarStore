@@ -1,6 +1,8 @@
-import { Component, OnInit, Input} from '@angular/core';
-import { Property } from '../property.model';
-import { PropertyService } from '../property.service';
+import {Component, OnInit, Input} from '@angular/core';
+import {Property} from '../property.model';
+import {PropertyService} from '../property.service';
+import {ActivatedRoute} from '@angular/router';
+
 
 @Component({
   selector: 'app-detail',
@@ -9,12 +11,16 @@ import { PropertyService } from '../property.service';
 })
 export class DetailComponent implements OnInit {
   @Input() property: Property;
-  @Input() id: number;
+  @Input() index: number;
 
-  constructor( private propertyService: PropertyService) { }
+  constructor(private propertyService: PropertyService,
+              private route: ActivatedRoute) {
+  }
+
   ngOnInit() {
   }
+
   onDelete() {
-      this.propertyService.deleteProperty(this.id);
-    }
+    this.propertyService.deleteProperty(this.index);
+  }
 }

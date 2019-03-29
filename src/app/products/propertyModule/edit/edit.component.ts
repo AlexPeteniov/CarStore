@@ -3,10 +3,10 @@ import {
   OnInit,
   ViewChild
 } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Property } from '../property.model';
-import { PropertyService } from '../property.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import {NgForm} from '@angular/forms';
+import {Property} from '../property.model';
+import {PropertyService} from '../property.service';
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-edit',
@@ -15,16 +15,18 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class EditComponent implements OnInit {
   @ViewChild('f') slForm: NgForm;
+
   constructor(private propertyService: PropertyService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
   }
 
   onSubmit(form: NgForm) {
-  const value = form.value;
-  const newProperty = new Property(value.name, value.type);
-  this.propertyService.addProperty(newProperty);
-}
+    const value = form.value;
+    const newProperty = new Property(value.name, value.type);
+    this.propertyService.addProperty(newProperty);
+  }
 }

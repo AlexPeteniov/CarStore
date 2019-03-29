@@ -1,10 +1,9 @@
-import {Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import {Component, OnInit, OnDestroy, Input} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
 
 import {PropertyService} from './property.service';
-import { Property} from './property.model';
-import { Subscription } from 'rxjs/Subscription';
-
+import {Property} from './property.model';
+import {Subscription} from 'rxjs/Subscription';
 
 
 @Component({
@@ -13,11 +12,13 @@ import { Subscription } from 'rxjs/Subscription';
   styleUrls: ['./property.component.css']
 })
 export class PropertyComponent implements OnInit, OnDestroy {
-  propertys: Property[];
+  propertys: Property[] = [];
   private subscription: Subscription;
+
   constructor(private propertyService: PropertyService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.subscription = this.propertyService.propertysChanged
@@ -28,6 +29,7 @@ export class PropertyComponent implements OnInit, OnDestroy {
       );
     this.propertys = this.propertyService.getPropertys();
   }
+
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
