@@ -7,6 +7,7 @@ import {NgForm} from '@angular/forms';
 import {Property} from '../property.model';
 import {PropertyService} from '../property.service';
 import {Router, ActivatedRoute} from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit',
@@ -18,7 +19,8 @@ export class EditComponent implements OnInit {
 
   constructor(private propertyService: PropertyService,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -28,5 +30,6 @@ export class EditComponent implements OnInit {
     const value = form.value;
     const newProperty = new Property(value.name, value.type);
     this.propertyService.addProperty(newProperty);
+    this.toastr.success('Проперти добавлено успешно!', 'Toastr message!', {positionClass: 'toast-top-center'});
   }
 }

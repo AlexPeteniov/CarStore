@@ -20,7 +20,10 @@ import {StartComponent} from './products/start/start.component';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {ProductService} from './products/productModule/product.service';
 import {ClickStopPropagationDirective} from './shared/cickStopPropagation';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import {ClickStopPropagationDirective} from './shared/cickStopPropagation';
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    CommonModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [PropertyService, ProductService],
   bootstrap: [AppComponent]

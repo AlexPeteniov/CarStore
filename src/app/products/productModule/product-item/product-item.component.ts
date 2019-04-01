@@ -2,6 +2,7 @@ import {Component, OnInit, Input} from '@angular/core';
 import {Product} from '../product.model';
 import {ProductService} from '../product.service';
 import {Router, ActivatedRoute} from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class ProductItemComponent implements OnInit {
 
   constructor(private productService: ProductService,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -24,6 +26,7 @@ export class ProductItemComponent implements OnInit {
 
   onDeleteProduct() {
     this.productService.deleteProduct(this.index);
+    this.toastr.warning('Продукт удален успешно!', 'Toastr message!', {positionClass: 'toast-top-center'});
   }
 
 }

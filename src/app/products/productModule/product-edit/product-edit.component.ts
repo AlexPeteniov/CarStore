@@ -3,6 +3,7 @@ import {Product} from '../product.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductService} from '../product.service';
 import {NgForm} from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class ProductEditComponent implements OnInit {
 
   constructor(private productService: ProductService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -26,6 +28,7 @@ export class ProductEditComponent implements OnInit {
     const value = form.value;
     const newProduct = new Product(value.name, value.price, value.dateAdd);
     this.productService.addProduct(newProduct);
+    this.toastr.success('Продукт добавлен успешно!', 'Toastr message!', {positionClass: 'toast-top-center'});
   }
 }
 

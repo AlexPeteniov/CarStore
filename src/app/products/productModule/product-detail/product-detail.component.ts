@@ -4,6 +4,7 @@ import { Product } from '../product.model';
 import { ProductService } from '../product.service';
 import {NgForm} from '@angular/forms';
 
+
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',

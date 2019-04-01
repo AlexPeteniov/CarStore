@@ -1,4 +1,7 @@
-<!--
+<div class="col-sm-2">
+  <a class="btn btn-link" routerLink="/products">Вернуться</a>
+</div>
+<hr>
 <a
   style="cursor: pointer;"
   class="list-group-item clearfix">
@@ -9,60 +12,5 @@
   </div>
 </a>
 
--->
-
-<div class="btn-group" appDropdown #r="appDropdown" >
-  <button type="button"
-          class="btn btn-primary dropdown-toggle"
-          data-toggle="dropdown">
-    Manage
-    <span class="caret"></span></button>
-  <ul class="dropdown-menu" [ngClass]="{'hide':r.isOpen}"  >
-    <li><a class="dropdown-item" style="cursor: pointer"
-    >To Shopping List</a></li>
-    <li><a class="dropdown-item" href="#">Edit Recipe</a></li>
-    <li><a class="dropdown-item" href="#">Delete Recipe</a></li>
-  </ul>
-</div>
 
 
-<!--
-<div class="row">
-  <div class="col-xs-12">
-    <div
-      class="btn-group"
-      appDropdown>
-      <button
-        type="button"
-        class="btn btn-primary dropdown-toggle">
-        Manage Product <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu">
-        <li><a style="cursor: pointer;"
-               (click)="onEditProduct()">Edit Product</a>
-        </li>
-        <li>
-          <a style="cursor: pointer;">
-            Delete Product</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
-    {{ product.price }}
-  </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
-    <ul class="list-group">
-      <li
-        class="list-group-item"
-        *ngFor="let propertyModule of propertys">
-        {{ propertyModule.name }} - {{ propertyModule.amount }}
-      </li>
-    </ul>
-  </div>
-</div>
--->
