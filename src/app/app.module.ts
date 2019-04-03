@@ -1,8 +1,8 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-
+import {FormsModule} from '@angular/forms';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {ProductsComponent} from './products/productModule/products.component';
@@ -24,6 +24,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
+import { AppInputComponent } from './ui components/input/app-input.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ToastrModule } from 'ngx-toastr';
     EditComponent,
     ProductEditComponent,
     StartComponent,
-    ClickStopPropagationDirective
+    ClickStopPropagationDirective,
+    AppInputComponent
   ],
   imports: [
     BrowserModule,
