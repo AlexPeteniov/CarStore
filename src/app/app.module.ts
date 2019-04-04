@@ -25,6 +25,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
 import { AppInputComponent } from './ui components/input/app-input.component';
+import { RadioComponent } from './ui components/radio/radio.component';
+import { ButtonComponent } from './ui components/button/button.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { AppInputComponent } from './ui components/input/app-input.component';
     ProductEditComponent,
     StartComponent,
     ClickStopPropagationDirective,
-    AppInputComponent
+    AppInputComponent,
+    RadioComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,

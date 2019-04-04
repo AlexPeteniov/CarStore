@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-12">
-    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <form [formGroup]="propForm">
       <div class="form-group row mt-4">
         <div class="col-sm-8"></div>
         <div class="col-sm-2">
@@ -10,7 +10,8 @@
           <button
             class="btn btn-success"
             type="submit"
-            [disabled]="!f.valid">Сохранить</button>
+            [disabled]="!propForm.valid"
+            (click)="onSubmit()">Сохранить</button>
         </div>
       </div>
       <hr>
@@ -24,7 +25,7 @@
                    class="form-control"
                    id="name"
                    placeholder="Цвет Авто"
-                   ngModel
+                   formControlName="name"
                    name="name"
                    required>
           </div>
@@ -41,7 +42,7 @@
                        name="type"
                        id="type"
                        value="DropDown"
-                       ngModel
+                       formControlName="type"
                        checked>
                 <label class="form-check-label" for="type2">
                   DropDown
@@ -53,7 +54,7 @@
                        name="type"
                        id="type2"
                        value="Number"
-                       ngModel>
+                       formControlName="type">
                 <label class="form-check-label" for="type2">
                   Number
                 </label>
@@ -64,8 +65,8 @@
                        name="type"
                        id="type3"
                        value="String"
-                       ngModel>
-                <label class="form-check-label" for="type3">
+                       formControlName="type">
+                <label class="form-check-label">
                   String
                 </label>
               </div>

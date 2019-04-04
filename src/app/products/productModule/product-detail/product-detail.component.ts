@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { Product } from '../product.model';
 import { ProductService } from '../product.service';
-import {NgForm} from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -13,14 +13,17 @@ import {NgForm} from '@angular/forms';
 export class ProductDetailComponent implements OnInit {
   product: Product;
   id: number;
-  @ViewChild('r') pForm: NgForm;
 
   constructor(private productService: ProductService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private toastr: ToastrService) {
   }
 
   ngOnInit() {
        this.id = this.route.snapshot.params['id'];
        this.product = this.productService.getProduct(this.id);
+  }
+  onSubmit() {
+    this.toastr.success('Поздравляем с покупкой!!!', 'Toastr message!', {positionClass: 'toast-top-center'});
   }
  }

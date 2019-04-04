@@ -1,9 +1,13 @@
-<div class="input" [formGroup]="ProductFormGroup">
-  <input
-    title="input"
-    type="text"
-    placeholder="{{controlName}}"
-    name="{{controlName}}"
-    formControlName="{{controlName}}"
-    class="form-control">
-</div>
+<div class="input" [formGroup]="pForm">
+  <br>
+  <div class="col-sm-3">
+    <input
+      title="input"
+      type="text"
+      name="{{controlName}}"
+      formControlName="{{controlName}}"
+      id=input
+      required
+      >
+  </div>
+
