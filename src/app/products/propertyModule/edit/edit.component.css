@@ -1,1 +1,1 @@
-label.required:after{  color: red;  content: " *";}input.ng-invalid.ng-touched {  border: 1px solid red;}form {  padding: 20px;  background-color: white;  height: 100%;}
+label.required:after{  color: red;  content: " *";}input.ng-invalid.ng-touched {  border: 1px solid red;}form {  padding: 20px;  background-color: white;  height: 120%;  margin-top:30px ;}div.block{  padding-left: 40px;}

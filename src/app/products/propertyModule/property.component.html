@@ -1,7 +1,7 @@
 <app-header></app-header>
 <div class="container shadow rounded">
-  <div class="row mr-2">
-    <div class="col-3 mt-3 ml-auto">
+  <div class="row ">
+    <div class="offset-8 col-3  mt-1">
       <div class="row justify-content-end">
         <a class="btn btn-warning  shadow text-white rounded"
            routerLink="/propertyModule/edit">+ Добавить проперти</a>
@@ -9,13 +9,13 @@
     </div>
   </div>
   <div class="row">
-    <div class="d-inline-block col-12 mt-3 " appDropdown #r="appDropdown">
-      <a class="dropdown-toggle text-muted col-5 ml-2 "
+    <div class="d-inline-block col-12  " appDropdown #r="appDropdown">
+      <a class="dropdown-toggle text-muted col-5  "
          data-toggle="dropdown"
-         style="cursor: pointer">Перечень товаров
+         style="cursor: pointer"><b>Перечень проперти</b>
         <span class="caret"></span></a>
 
-      <ul class=" dropdown-menu border-0 col-11 mt-2  "
+      <ul class=" dropdown-menu border-0 col-9   "
           [ngClass]="{'show':r.isOpen}"
           ng-click="event.stopPropagation()">
         <li class="">

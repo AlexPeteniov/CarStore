@@ -1,17 +1,18 @@
 <div class="container shadow rounded">
-<div class="row mr-2">
-  <div class="col-2 mt-5 ml-auto">
+<div class="row ">
+  <div class="col-3 ml-auto">
     <div class="row justify-content-end">
       <a class="btn btn-warning shadow  text-white rounded"
          routerLink="/products/new">+ Добавить товар</a>
     </div>
   </div>
 </div>
-<div class="row ml-2">
+<div class="row ">
+  <div class="info">
   <div class="d-inline-block " appDropdown #r="appDropdown">
     <a class="dropdown-toggle text-muted "
        data-toggle="dropdown"
-       style="cursor: pointer">Перечень товаров
+       style="cursor: pointer"><b>Перечень товаров</b>
       <span class="caret"></span></a>
     <ul class=" dropdown-menu border-0 col-10  "
         [ngClass]="{'show':r.isOpen}"
@@ -34,5 +35,6 @@
       <p class="control">Управление</p>
     </div>
   </div>
+</div>
 </div>
 </div>

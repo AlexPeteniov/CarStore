@@ -14,6 +14,7 @@ export class ProductDetailComponent implements OnInit {
   product: Product;
   id: number;
 
+
   constructor(private productService: ProductService,
               private route: ActivatedRoute,
               private toastr: ToastrService) {

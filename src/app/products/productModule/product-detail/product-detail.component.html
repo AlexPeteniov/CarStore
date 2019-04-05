@@ -17,24 +17,12 @@
   <div class="row ">
     <div class=" col-2  d-inline-block  " appDropdown #r="appDropdown">
       <label class="color" >Цвет Авто</label>
-      <button class="btn  border border-dark
-      dropdown-toggle
-      text-primary  "
-              data-toggle="dropdown"
-              style="cursor: pointer">
-        <span class="text-muted pr-5">Синий</span>
-        <span class="caret pl-5"></span></button>
-      <ul class=" dropdown-menu  col-10 ml-3 "
-          [ngClass]="{'show':r.isOpen}"
-          ng-click="event.stopPropagation()">
-        <li>
-          <app-product-item
-            *ngFor="let productEl of products; let i=index"
-            [product]="productEl"
-            [index]="i">
-          </app-product-item>
-        </li>
-      </ul>
+      <select
+        class="custom-select mr-sm-2" >
+        <option >product.nameColor</option>
+        <option>Красный</option>
+        <option>Черный</option>
+      </select>
     </div>
   </div>
   <br>
@@ -45,7 +33,7 @@
   <br>
   <div class="col-2 pl-0 mt-2 ">
     <label >Тип Топлива</label>
-    <h4 class="price"> {{product.price}} </h4>
+    <h4 class="price"> {{product.gasType}} </h4>
   </div>
   <br>
   <div class="col-2 pl-0 mt-2 ">
