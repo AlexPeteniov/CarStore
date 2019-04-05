@@ -115,32 +115,30 @@
             <div class="form-group "
                  *ngFor="let propControl of pForm.get('props').controls; let i = index">
               <p>Свойство {{i+1}}</p>
-              <div>
-            <select
-              class="custom-select mr-sm-2" >
-              <option
-                formControlName="nameColor"
-                selected class="form-control"
+              <div class="row">
+                  <select
+                    class="custom-select " >
+                    <option
+                      formControlName="nameColor"
+                      selected class="form-control"
                       value="red">
-                ЦветАвто
-              </option>
-              <option value="gas"
-                      class="form-control"
-                     >Тип топлива
-              </option>
-              <option value="year"
-                      class="form-control"
-                   >Год Выпуска
-              </option>
-            </select>
-
-
-              </div>
-              <button class="btn btn-link onDeleteProps(index: number)">
+                      ЦветАвто
+                    </option>
+                    <option value="gas"
+                            class="form-control"
+                    >Тип топлива
+                    </option>
+                    <option value="year"
+                            class="form-control"
+                    >Год Выпуска
+                    </option>
+                  </select>
+                <button class="btn btn-link onDeleteProps(index: number)">
                 <span>
                   <i class="fas fa-minus-circle fa-2x pl-2"></i>
                 </span>
-              </button>
+                </button>
+              </div>
           </div>
         </div>
         <hr>
