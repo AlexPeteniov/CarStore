@@ -1,5 +1,5 @@
-import {Component, OnInit, OnDestroy, Input} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import {PropertyService} from './property.service';
 import {Property} from './property.model';

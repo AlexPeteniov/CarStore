@@ -1,8 +1,8 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Product} from '../product.model';
 import {ProductService} from '../product.service';
-import {Router, ActivatedRoute} from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 
 @Component({
