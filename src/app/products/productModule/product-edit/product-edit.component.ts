@@ -13,17 +13,16 @@ import { ToastrService } from 'ngx-toastr';
 export class ProductEditComponent implements OnInit {
   product: Product;
   pForm: FormGroup;
-  kForm: FormGroup;
   condition: boolean;
   constructor(
     private fb: FormBuilder,
     private productService: ProductService,
     private toastr: ToastrService) {}
-
+    props = ['Цвет Авто', 'Год Выпуска', 'Тип топлива'] ;
   ngOnInit() {
     this.condition = true;
-    this.kForm = this.fb.group({select: ['']}),
     this.pForm = this.fb.group({
+      propControl: ['Цвет Авто'],
       name: [''],
       price: [''],
       image: [''],

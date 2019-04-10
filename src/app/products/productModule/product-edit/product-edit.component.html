@@ -33,6 +33,9 @@
         <!-- *****************************
          Can't inject UI component.
          <app-input [pForm]="pFrom"></app-input>-->
+
+
+
       </div>
       <hr>
       <div class="form-group row ml-1">
@@ -43,7 +46,6 @@
                  class="form-control"
                  id="price"
                  placeholder="32 155"
-                 name="price"
                  formControlName="price"
                  required>
         </div>
@@ -54,7 +56,7 @@
         <br>
         <div class="col-sm-3 ">
           <div class="input-group mt-3">
-            <input type="tetx"
+            <input type="text"
                    class="form-control"
                    id="image"
                    placeholder='Url image'
@@ -74,22 +76,6 @@
       </div>
       <hr>
       <div class="form-group row ml-1">
-        <label class="control-label required col-sm-12 col-form-label" for="dateAdd">Год выпуска</label>
-        <br>
-        <div class="col-sm-3">
-          <div class="input-group">
-            <input type="dateAdd"
-                   class="form-control"
-                   id="dateAdd"
-                   placeholder='dateAdd'
-                   name="dateAdd"
-                   formControlName="dateAdd"
-                   required>
-          </div>
-        </div>
-      </div>
-      <hr>
-      <div class="form-group row ml-1">
         <label class="control-label required col-sm-12 col-form-label">
           Описание
         </label>
@@ -101,7 +87,6 @@
                   placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, architecto atque deserunt dolore, fugiat laudantium nihil perferendis porro quae, quasi qui quo sapiente vitae. Eius fugiat id itaque possimus sapiente!">
         </textarea>
       </div>
-      <div [formGroup]="pForm">
         <div class="form-row align-items-center">
           <div class="col-auto my-1">
             <label class="control-label col-sm-12 col-form-label">
@@ -115,24 +100,47 @@
             <div class="form-group "
                  *ngFor="let propControl of pForm.get('props').controls; let i = index">
               <p>Свойство {{i+1}}</p>
-              <div class="row">
-                  <select
-                    class="custom-select " >
-                    <option
-                      formControlName="nameColor"
-                      selected class="form-control"
-                      value="red">
-                      ЦветАвто
-                    </option>
-                    <option value="gas"
-                            class="form-control"
-                    >Тип топлива
-                    </option>
-                    <option value="year"
-                            class="form-control"
-                    >Год Выпуска
-                    </option>
-                  </select>
+              <div class="row ">
+                <select formControlName="propControl">
+                  <option [ngValue]="prop" *ngFor="let prop of props;
+                  let a = index">
+                    {{prop}}
+                  </option>
+                </select>
+<!--                ////... не могу связать select и input-->
+
+                <ul>
+                  <li *ngIf="pForm.value.propControl ==='Цвет Авто'"
+                      class="text-success">
+                    <input type=nameColor
+                           class="form-control ml-2"
+                           placeholder='Введите значение'
+                           name=nameColor
+                           formControlName=nameColor
+                           >
+                  </li>
+                  <li *ngIf="pForm.value.propControl ==='Год Выпуска'"
+                      class="text-success">
+                    <input type=dateAdd
+                           class="form-control ml-2"
+                           placeholder='Введите значение'
+                           name=dateAdd
+                           formControlName=dateAdd
+                           >
+                  </li>
+                  <li *ngIf="pForm.value.propControl ==='Тип топлива'"
+                      class="text-success">
+                    <input type=typeGas
+                           class="form-control ml-2"
+                           placeholder='Введите значение'
+                           name=typeGas
+                           formControlName=typeGas
+                           >
+                  </li>
+                </ul>
+
+
+
                 <button class="btn btn-link onDeleteProps(index: number)">
                 <span>
                   <i class="fas fa-minus-circle fa-2x pl-2"></i>
@@ -142,7 +150,6 @@
           </div>
         </div>
         <hr>
-        </div>
       </div>
     </form>
   </div>
