@@ -10,6 +10,11 @@
     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Введите пароль">
   </div>
   <div class="d-flex justify-content-center">
-    <button type="submit" class="btn btn-warning text-white"  routerLink="/products">Войти</button>
+    <button type="submit"
+            class="btn btn-warning text-white"
+            routerLink="/products"
+            (click)="onLogin()">
+            Войти
+    </button>
   </div>
 </form>

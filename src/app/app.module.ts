@@ -27,6 +27,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { AppInputComponent } from './ui components/input/app-input.component';
 import { RadioComponent } from './ui components/radio/radio.component';
 import { ButtonComponent } from './ui components/button/button.component';
+import {AuthService} from './auth.service';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +47,7 @@ import { ButtonComponent } from './ui components/button/button.component';
     ClickStopPropagationDirective,
     AppInputComponent,
     RadioComponent,
-    ButtonComponent
+    ButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,7 @@ import { ButtonComponent } from './ui components/button/button.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot()
   ],
-  providers: [PropertyService, ProductService],
+  providers: [PropertyService, ProductService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
