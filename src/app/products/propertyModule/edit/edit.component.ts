@@ -29,7 +29,7 @@ export class EditComponent implements OnInit {
 
   onSubmit(form: FormGroup = this.propForm) {
     const value = form.value;
-    const newProperty = new Property(value.name, value.type);
+    const newProperty = new Property(value.name, value.type, value.id);
     this.propertyService.addProperty(newProperty);
     this.toastr.success('Проперти добавлено успешно!', 'Toastr message!', {positionClass: 'toast-top-center'});
   }
