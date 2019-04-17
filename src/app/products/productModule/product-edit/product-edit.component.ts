@@ -1,60 +1,81 @@
-import {Component, OnInit} from '@angular/core';
-import {Product} from '../product.model';
-import {ProductService} from '../product.service';
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {ToastrService} from 'ngx-toastr';
-
+import { Component, OnInit,Input } from '@angular/core';
+import { Product } from '../product.model';
+import { ProductService } from '../product.service';
+import {FormArray, FormBuilder, FormGroup,} from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import {ActivatedRoute, Router} from '@angular/router';
+import { Property } from '../../propertyModule/property.model';
+import { PropertyService } from '../../propertyModule/property.service';
 
 @Component({
   selector: 'app-product-edit',
   templateUrl: './product-edit.component.html',
-  styleUrls: ['./product-edit.component.css']
+  styleUrls: ['./product-edit.component.css'],
 })
 export class ProductEditComponent implements OnInit {
+  @Input() index: number;
   product: Product;
   pForm: FormGroup;
+  props: FormArray;
   condition: boolean;
+
+
 
   constructor(
     private fb: FormBuilder,
+    private propertyService: PropertyService,
     private productService: ProductService,
-    private toastr: ToastrService) {
-  }
+    private route: ActivatedRoute,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
-  props = ['Цвет Авто', 'Год Выпуска', 'Тип топлива'];
+  alowedProps: Property[] = this.propertyService.getPropertys();
 
   ngOnInit() {
     this.condition = true;
     this.pForm = this.fb.group({
-      propControl: ['Цвет Авто'],
       name: [''],
       price: [''],
       image: [''],
       textarea: [''],
-      typeGas: [''],
-      nameColor: [''],
-      dateAdd: ['', Validators.pattern(/^[1-9]+[0-9]*$/)],
-      props: new FormArray([])
+      props: this.fb.array([this.createProp('Цвет авто')]),
     });
-    this.pForm.valueChanges.subscribe(newVal => console.log());
+    this.pForm.valueChanges.subscribe(newVal => console.log(newVal));
+  }
+
+  createProp(val): FormGroup {
+    return this.fb.group({
+      value: '',
+      name: val || '',
+    });
   }
 
   onSubmit(form: FormGroup = this.pForm) {
     const value = form.value;
-    const newProduct = new Product(value.name,
-      value.price, value.dateAdd, value.image, value.textarea, value.nameColor, value.gasType);
+    const newProduct = new Product(
+      value.name,
+      value.price,
+      value.image,
+      value.textarea,
+      value.props
+    );
     this.productService.addProduct(newProduct);
-    this.toastr.success('Продукт добавлено успешно!', 'Toastr message!', {positionClass: 'toast-top-center'});
+    this.toastr.success('Продукт добавлено успешно!', 'Toastr message!', {
+      positionClass: 'toast-top-center',
+    });
   }
 
   onAddProps() {
-    const control = new FormControl(null, Validators.required);
-    (<FormArray> this.pForm.get('props')).push(control);
+    this.props = this.pForm.get('props') as FormArray;
+    this.props.push(this.createProp(''));
   }
 
   onDeleteProps(index: number) {
-    (<FormArray> this.pForm.get('props')).removeAt(index);
+    (<FormArray>this.pForm.get('props')).removeAt(index);
     this.pForm.removeControl('select');
   }
-
+  onBack(){
+    this.router.navigate(['/products']);
+  }
 }

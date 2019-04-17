@@ -1,88 +1,111 @@
-<div class="row ">
-  <div class="col-12 ">
+
     <form [formGroup]="pForm">
       <div class="form-group row mt-4">
-        <div class="col-sm-8"></div>
         <div class="col-sm-2">
-          <a class="btn btn-danger btn-block" routerLink="/products">Вернуться</a>
+          <button
+            class="btn btn-danger"
+            (click)="onBack()"
+          >
+            Вернуться
+          </button>
         </div>
         <div class="col-sm-2">
           <button
             class="btn btn-success"
             type="submit"
             [disabled]="!pForm.valid"
-            (click)="onSubmit()">Сохранить
+            (click)="onSubmit()"
+          >
+            Сохранить
           </button>
         </div>
       </div>
-      <hr>
+      <hr />
       <h4>Добавление товара</h4>
-      <hr>
+      <hr />
       <div class="form-group row ml-1">
-        <label class="control-label required col-sm-12 col-form-label" for="name">Название товара</label>
-        <br>
+        <label
+          class="control-label required col-sm-12 col-form-label"
+          for="name"
+          >Название товара</label
+        >
+        <br />
         <div class="col-sm-3">
-          <input type="email"
-                 class="form-control"
-                 id="name"
-                 placeholder="Mersedes s554"
-                 name="name"
-                 formControlName="name"
-                 required>
+          <input
+            type="email"
+            class="form-control"
+            id="name"
+            placeholder="Mersedes s554"
+            name="name"
+            formControlName="name"
+            required
+          />
         </div>
         <!-- *****************************
          Can't inject UI component.
          <app-input [pForm]="pFrom"></app-input>-->
-
-
       </div>
-      <hr>
+      <hr />
       <div class="form-group row ml-1">
-        <label class="control-label required col-sm-12 col-form-label" for="price">Стоимость товара</label>
-        <br>
+        <label
+          class="control-label required col-sm-12 col-form-label"
+          for="price"
+          >Стоимость товара</label
+        >
+        <br />
         <div class="col-sm-3">
-          <input type="text"
-                 class="form-control"
-                 id="price"
-                 placeholder="32 155"
-                 formControlName="price"
-                 required>
+          <input
+            type="text"
+            class="form-control"
+            id="price"
+            placeholder="32 155"
+            formControlName="price"
+            required
+          />
         </div>
       </div>
-      <hr>
+      <hr />
       <div class="form-group row ml-1">
-        <label class="control-label required col-sm-12 col-form-label" for="image">Изображение товара</label>
-        <br>
+        <label
+          class="control-label required col-sm-12 col-form-label"
+          for="image"
+          >Изображение товара</label
+        >
+        <br />
         <div class="col-sm-3 ">
           <div class="input-group mt-3">
-            <input type="text"
-                   class="form-control"
-                   id="image"
-                   placeholder='Url image'
-                   name="image"
-                   formControlName="image"
-                   required>
+            <input
+              type="text"
+              class="form-control"
+              id="image"
+              placeholder="Url image"
+              name="image"
+              formControlName="image"
+              required
+            />
             <a
-              href='https://www.google.com/imghp?hl=ru'
+              href="https://www.google.com/imghp?hl=ru"
               target="_blank"
-              class="btn btn-link  ml-2">
+              class="btn btn-link  ml-2"
+            >
               <span> <i class="fas fa-download fa-2x "></i></span>
             </a>
-
           </div>
         </div>
       </div>
-      <hr>
+      <hr />
       <div class="form-group row ml-1">
         <label class="control-label required col-sm-12 col-form-label">
           Описание
         </label>
-        <textarea class="form-control col-sm-6"
-                  id="example"
-                  required
-                  formControlName="textarea"
-                  rows="5"
-                  placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, architecto atque deserunt dolore, fugiat laudantium nihil perferendis porro quae, quasi qui quo sapiente vitae. Eius fugiat id itaque possimus sapiente!">
+        <textarea
+          class="form-control col-sm-6"
+          id="example"
+          required
+          formControlName="textarea"
+          rows="5"
+          placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, architecto atque deserunt dolore, fugiat laudantium nihil perferendis porro quae, quasi qui quo sapiente vitae. Eius fugiat id itaque possimus sapiente!"
+        >
         </textarea>
       </div>
       <div class="form-row align-items-center">
@@ -90,59 +113,34 @@
           <label class="control-label col-sm-12 col-form-label">
             Добавленные свойства
             <button class="btn btn-link" (click)="onAddProps()">
-                <span>
-                  <i class="fas fa-plus-circle fa-2x pl-2"></i>
-                </span>
+              <span>
+                <i class="fas fa-plus-circle fa-2x pl-2"></i>
+              </span>
             </button>
           </label>
-          <div class="form-group "
-               *ngFor="let propControl of pForm.get('props').controls; let i = index">
-            <p>Свойство {{i+1}}</p>
-            <div class="row ">
-              <select formControlName="propControl">
-                <option [ngValue]="prop" *ngFor="let prop of props;
-                  let a = index">
-                  {{prop}}
+          <div
+            formArrayName="props"
+            class="form-group "
+            *ngFor="
+              let propControl of pForm.get('props').controls;
+              let i = index
+            "
+          >
+            <div [formGroupName]="i">
+              <select formControlName="name">
+                <option *ngFor="let prop of alowedProps" [ngValue]="prop.name">
+                  {{ prop.name }}
                 </option>
               </select>
-              <!--  ////... не могу связать select и input-->
-
-              <ul>
-                <li *ngIf="pForm.value.propControl ==='Цвет Авто'"
-                    class="text-success">
-                  <input type=nameColor
-                         class="form-control ml-2"
-                         placeholder='Цвет Авто'
-                         name=nameColor
-                         formControlName=nameColor>
-                </li>
-                <li *ngIf="pForm.value.propControl ==='Год Выпуска'"
-                    class="text-success">
-                  <input type=dateAdd
-                         class="form-control ml-2"
-                         placeholder='Год Выпуска'
-                         name=dateAdd
-                         formControlName=dateAdd>
-                </li>
-                <li *ngIf="pForm.value.propControl ==='Тип топлива'"
-                    class="text-success">
-                  <input type=typeGas
-                         class="form-control ml-2"
-                         placeholder='Тип топлива'
-                         name=typeGas
-                         formControlName=typeGas>
-                </li>
-              </ul>
-              <button class="btn btn-link onDeleteProps(index: number)">
-                <span>
-                  <i class="fas fa-minus-circle fa-2x pl-2"></i>
-                </span>
-              </button>
+              <input type="text" formControlName="value" />
             </div>
+            <button class="btn btn-link" (click)="onDeleteProps(i)">
+              <span>
+                <i class="fas fa-minus-circle fa-2x pl-2"></i>
+              </span>
+            </button>
           </div>
         </div>
-        <hr>
+        <hr />
       </div>
     </form>
-  </div>
-</div>
