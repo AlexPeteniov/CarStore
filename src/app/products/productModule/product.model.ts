@@ -1,1 +1,21 @@
-export class Product {  public name: string;  public price: string;  public dateAdd: string;  public image: string;  public textarea: string;  public gasType: string;  public nameColor: string;  constructor(name: string,              price: string,              dateAdd: string,              image: string,              textarea: string,              gasType: string,              nameColor: string) {    this.name = name;    this.price = price;    this.dateAdd = dateAdd;    this.image = image;    this.textarea = textarea;    this.gasType = gasType;    this.nameColor = nameColor;  }}
+export class Product {
+  public name: string;
+  public price: string;
+  public image: string;
+  public textarea: string;
+  public props: object[];
+
+  constructor(
+    name: string,
+    price: string,
+    image: string,
+    textarea: string,
+    props: object[]
+  ) {
+    this.name = name;
+    this.price = price;
+    this.image = image;
+    this.textarea = textarea;
+    this.props = props;
+  }
+}

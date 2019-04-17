@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Product} from '../product.model';
-import {ProductService} from '../product.service';
+import {Product} from '../../product.model';
+import {ProductService} from '../../product.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
-
+import { FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-product-item',
@@ -13,7 +13,9 @@ import {ToastrService} from 'ngx-toastr';
 export class ProductItemComponent implements OnInit {
 
   @Input() product: Product;
+  @Input() id: number;
   @Input() index: number;
+  @Input() pForm: FormGroup;
 
   constructor(private productService: ProductService,
               private router: Router,
@@ -27,6 +29,11 @@ export class ProductItemComponent implements OnInit {
   onDeleteProduct() {
     this.productService.deleteProduct(this.index);
     this.toastr.warning('Продукт удален успешно!', 'Toastr message!', {positionClass: 'toast-top-center'});
+  }
+  productEdit() {
+    this.product = this.productService.getProduct(this.index);
+
+ /*   this.router.navigate(['/products/new']);*/
   }
 
 }
