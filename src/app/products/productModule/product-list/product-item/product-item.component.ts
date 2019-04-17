@@ -32,8 +32,13 @@ export class ProductItemComponent implements OnInit {
   }
   productEdit() {
     this.product = this.productService.getProduct(this.index);
-
- /*   this.router.navigate(['/products/new']);*/
+    this.pForm.setValue({
+      name: this.product.name,
+      price: this.product.price,
+      image: this.product.image,
+      textarea: this.product.textarea,
+    });
+    this.router.navigate(['/products/new']);
   }
 
 }

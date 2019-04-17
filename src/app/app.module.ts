@@ -28,6 +28,8 @@ import { AppInputComponent } from './ui components/input/app-input.component';
 import { RadioComponent } from './ui components/radio/radio.component';
 import { ButtonComponent } from './ui components/button/button.component';
 import {AuthService} from './auth.service';
+import { SharedModule } from './shared/shared.module';
+import { OrderByPipe } from './shared/order-by.pipe';
 
 
 @NgModule({
@@ -48,6 +50,7 @@ import {AuthService} from './auth.service';
     AppInputComponent,
     RadioComponent,
     ButtonComponent,
+    OrderByPipe,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +61,8 @@ import {AuthService} from './auth.service';
     AngularFontAwesomeModule,
     CommonModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    SharedModule
   ],
   providers: [PropertyService, ProductService, AuthService],
   bootstrap: [AppComponent]

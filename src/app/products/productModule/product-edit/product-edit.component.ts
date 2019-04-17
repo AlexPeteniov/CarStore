@@ -14,8 +14,7 @@ import { PropertyService } from '../../propertyModule/property.service';
 })
 export class ProductEditComponent implements OnInit {
   @Input() index: number;
-  product: Product;
-  pForm: FormGroup;
+  @Input() pForm: FormGroup;
   props: FormArray;
   condition: boolean;
 
