@@ -8,7 +8,7 @@ import {HeaderComponent} from './header/header.component';
 import {ProductsComponent} from './products/productModule/products.component';
 import {ProductListComponent} from './products/productModule/product-list/product-list.component';
 import {ProductDetailComponent} from './products/productModule/product-detail/product-detail.component';
-import {ProductItemComponent} from './products/productModule/product-item/product-item.component';
+import {ProductItemComponent} from './products/productModule/product-list/product-item/product-item.component';
 import {PropertyComponent} from './products/propertyModule/property.component';
 import {PropertyService} from './products/propertyModule/property.service';
 import {DetailComponent} from './products/propertyModule/detail/detail.component';

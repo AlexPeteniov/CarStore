@@ -1,13 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { Component, OnInit, Input,EventEmitter, Output } from '@angular/core';
 @Component({
   selector: 'app-input',
   templateUrl: './app-input.component.html',
-  styleUrls: ['./app-input.component.css']
+  styleUrls: ['./app-input.component.css'],
 })
-
 export class AppInputComponent implements OnInit {
-  @Input() pForm: FormGroup;
-  ngOnInit() {
-  }
+  @Input() inputValue: string = "";
+  @Output() inputValueChange: EventEmitter<string> = new EventEmitter<string>();
+  ngOnInit() {}
 }
