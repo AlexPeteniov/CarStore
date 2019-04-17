@@ -2,49 +2,38 @@
   <div class="col-sm-2 pt-4">
     <a class="btn btn-link" routerLink="/products">Вернуться</a>
   </div>
-  <br>
-  <hr>
+  <br />
+  <hr />
   <div class="row ">
     <div class="col-4 mt-3">
-      <img src={{product.image}} class="rounded float-left">
+      <img src="{{ product.image }}" class="rounded float-left" />
     </div>
     <div class="col-6 offset-2 d-sm-none d-lg-block">
-      <h2> {{product.name}} </h2>
-      <textarea cols="60" rows="10" text-muted> {{product.textarea}}</textarea>
+      <h2>{{ product.name }}</h2>
+      <textarea cols="60" rows="10" text-muted>
+ {{ product.textarea }}</textarea
+      >
     </div>
   </div>
 
-  <div class="row ">
-    <div class=" col-2  d-inline-block  " appDropdown #r="appDropdown">
-      <label class="color">Цвет Авто</label>
-      <select
-        class="custom-select mr-sm-2">
-        <option>{{product.nameColor}}</option>
-        <option>Красный</option>
-        <option>Черный</option>
-      </select>
+  <div *ngFor="let prop of product.props">
+    <div class="col-2 pl-0 mt-2 ">
+      <label>{{ prop.name }}</label>
+      <h4>{{ prop.value }}</h4>
     </div>
+    <br />
   </div>
-  <br>
-  <div class=" col-2 pl-0 mt-2 ">
-    <label>Год выпуска</label>
-    <h4> {{product.dateAdd}} </h4>
-  </div>
-  <br>
-  <div class="col-2 pl-0 mt-2 ">
-    <label>Тип Топлива</label>
-    <h4 class="price"> {{product.gasType}} </h4>
-  </div>
-  <br>
+
   <div class="col-2 pl-0 mt-2 ">
     <label>Цена Авто</label>
-    <h4 class="price"> {{product.price}} </h4>
+    <h4 class="price">{{ product.price }}</h4>
   </div>
   <div class="d-flex justify-content-center">
     <button
       type="submit"
       (click)="onSubmit()"
-      class="btn btn-warning shadow text-white rounded mt-5 ">
+      class="btn btn-warning shadow text-white rounded mt-5 "
+    >
       Беру!!!
     </button>
   </div>
