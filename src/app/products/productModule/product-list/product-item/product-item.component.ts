@@ -1,9 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {Product} from '../../product.model';
 import {ProductService} from '../../product.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import { FormGroup} from '@angular/forms';
+import {OrderPipe} from 'ngx-order-pipe';
 
 @Component({
   selector: 'app-product-item',
@@ -11,33 +12,33 @@ import { FormGroup} from '@angular/forms';
   styleUrls: ['./product-item.component.css']
 })
 export class ProductItemComponent implements OnInit {
-
-  @Input() product: Product;
   @Input() id: number;
   @Input() index: number;
+  @Input() product: Product;
   @Input() pForm: FormGroup;
+  sortedCollection: any[];
+
 
   constructor(private productService: ProductService,
               private router: Router,
               private route: ActivatedRoute,
-              private toastr: ToastrService) {
+              private toastr: ToastrService,
+              private orderPipe: OrderPipe) {
+    this.sortedCollection = orderPipe.transform
+    (this.product, 'product.name');
+    console.log(this.sortedCollection);
   }
 
   ngOnInit() {
   }
 
   onDeleteProduct() {
-    this.productService.deleteProduct(this.index);
+    this.productService.deleteProduct(this.productService.getProducts().indexOf(this.product));
     this.toastr.warning('Продукт удален успешно!', 'Toastr message!', {positionClass: 'toast-top-center'});
   }
-  productEdit() {
-    this.product = this.productService.getProduct(this.index);
-    this.pForm.setValue({
-      name: this.product.name,
-      price: this.product.price,
-      image: this.product.image,
-      textarea: this.product.textarea,
-    });
+
+  productEdit(product: Product, index) {
+    this.productService.putProduct(product)
     this.router.navigate(['/products/new']);
   }
 

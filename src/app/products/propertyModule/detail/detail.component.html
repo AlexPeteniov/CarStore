@@ -1,14 +1,13 @@
 <div class="container ">
   <div class="row">
-    <div class="float-left col-9 ">
+    <div class="float-left col-9 mr-2 ">
       <a
         routerLinkActive="active"
         class=" clearfix">
-
-        <div class="col-5 d-inline-block ">
+        <div class="col-5 d-inline-block  ">
           <p>{{property.name}}</p>
         </div>
-        <div class="col-4 d-inline-block ">
+        <div class="col-4 d-inline-block ml-4 ">
           <p class="proptype">{{property.type}}</p>
         </div>
       </a>
@@ -16,7 +15,6 @@
     <div class="d-inline-block ml-auto">
       <button class="btn btn-link"
               type="button"
-              appPropagation
               (click)="onDelete()"><u>Удалить</u>
       </button>
     </div>
