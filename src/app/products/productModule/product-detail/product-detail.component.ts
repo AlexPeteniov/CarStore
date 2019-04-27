@@ -12,15 +12,16 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class ProductDetailComponent implements OnInit {
   product: Product;
-  id: number;
+  pname: string;
   constructor(private productService: ProductService,
               private route: ActivatedRoute,
               private toastr: ToastrService) {
   }
 
   ngOnInit() {
-    this.id = this.route.snapshot.params['id'];
-    this.product = this.productService.getProduct(this.id);
+    this.pname = this.route.snapshot.params['product.name'];
+    console.log(this.pname);
+    this.product = this.productService.getProductByName(this.pname);
   }
 
   onSubmit() {

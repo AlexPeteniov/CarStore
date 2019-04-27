@@ -2,29 +2,29 @@
   <div class="col-sm-2 pt-4">
     <a class="btn btn-link" routerLink="/products">Вернуться</a>
   </div>
-  <br />
-  <hr />
+  <br/>
+  <hr/>
   <div class="row ">
-    <div class="col-4 mt-3">
-      <img src="{{ product.image }}" class="rounded float-left" />
+    <div class="col-12 col-lg-4 mt-3">
+      <img src="{{ product.image }}" class="rounded float-left"/>
     </div>
-    <div class="col-6 offset-2 d-sm-none d-lg-block">
+    <div class="col-5 offset-2 d-none d-lg-block">
       <h2>{{ product.name }}</h2>
-      <textarea cols="60" rows="10" text-muted>
- {{ product.textarea }}</textarea
+      <textarea cols="55" rows="10" text-muted>
+      {{ product.textarea }}</textarea
       >
     </div>
   </div>
 
   <div *ngFor="let prop of product.props">
-    <div class="col-2 pl-0 mt-2 ">
+    <div class="col-12 pl-0 mt-2 ">
       <label>{{ prop.name }}</label>
       <h4>{{ prop.value }}</h4>
     </div>
-    <br />
+    <br/>
   </div>
 
-  <div class="col-2 pl-0 mt-2 ">
+  <div class="col-12 pl-0 mt-2 ">
     <label>Цена Авто</label>
     <h4 class="price">{{ product.price }}</h4>
   </div>

@@ -1,146 +1,152 @@
-
-    <form [formGroup]="pForm">
-      <div class="form-group row mt-4">
-        <div class="col-sm-2">
-          <button
-            class="btn btn-danger"
-            (click)="onBack()"
-          >
-            Вернуться
-          </button>
-        </div>
-        <div class="col-sm-2">
-          <button
-            class="btn btn-success"
-            type="submit"
-            [disabled]="!pForm.valid"
-            (click)="onSubmit()"
-          >
-            Сохранить
-          </button>
-        </div>
-      </div>
-      <hr />
-      <h4>Добавление товара</h4>
-      <hr />
-      <div class="form-group row ml-1">
-        <label
-          class="control-label required col-sm-12 col-form-label"
-          for="name"
-          >Название товара</label
-        >
-        <br />
-        <div class="col-sm-3">
-          <input
-            type="email"
-            class="form-control"
-            id="name"
-            placeholder="Mersedes s554"
-            name="name"
-            formControlName="name"
-            required
-          />
-        </div>
-        <!-- *****************************
-         Can't inject UI component.
-         <app-input [pForm]="pFrom"></app-input>-->
-      </div>
-      <hr />
-      <div class="form-group row ml-1">
-        <label
-          class="control-label required col-sm-12 col-form-label"
-          for="price"
-          >Стоимость товара</label
-        >
-        <br />
-        <div class="col-sm-3">
-          <input
-            type="text"
-            class="form-control"
-            id="price"
-            placeholder="32 155"
-            formControlName="price"
-            required
-          />
-        </div>
-      </div>
-      <hr />
-      <div class="form-group row ml-1">
-        <label
-          class="control-label required col-sm-12 col-form-label"
-          for="image"
-          >Изображение товара</label
-        >
-        <br />
-        <div class="col-sm-3 ">
-          <div class="input-group mt-3">
-            <input
-              type="text"
-              class="form-control"
-              id="image"
-              placeholder="Url image"
-              name="image"
-              formControlName="image"
-              required
-            />
-            <a
-              href="https://www.google.com/imghp?hl=ru"
-              target="_blank"
-              class="btn btn-link  ml-2"
-            >
-              <span> <i class="fas fa-download fa-2x "></i></span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <hr />
-      <div class="form-group row ml-1">
-        <label class="control-label required col-sm-12 col-form-label">
-          Описание
-        </label>
-        <textarea
-          class="form-control col-sm-6"
-          id="example"
+<form [formGroup]="pForm">
+  <div class=" bt form-group row mt-4 ">
+    <div class="col-sm-none col-lg-7 "></div>
+    <div class="col-12 col-md-3 col-lg-2 mr-4">
+      <button
+        class="btn btn-danger "
+        (click)="onBack()"
+      >
+        Вернуться
+      </button>
+    </div>
+    <div class="col-12 col-md-3 col-lg-2 ">
+      <button
+        class="btn btn-success "
+        type="submit"
+        [disabled]="!pForm.valid"
+        (click)="onSubmit()"
+      >
+        Сохранить
+      </button>
+    </div>
+  </div>
+  <hr/>
+  <h5>Добавление товара</h5>
+  <hr/>
+  <div class="form-group row  ml-4">
+    <label
+      class="control-label required col-sm-12 col-form-label"
+      for="name"
+    >Название товара</label
+    >
+    <br/>
+    <div class="col-sm-3">
+      <input
+        type="email"
+        class="form-control"
+        id="name"
+        placeholder="Mersedes s554"
+        name="name"
+        formControlName="name"
+        required
+      />
+    </div>
+    <!-- *****************************
+     Can't inject UI component.
+     <app-input [pForm]="pFrom"></app-input>-->
+  </div>
+  <hr/>
+  <div class="form-group row ml-4">
+    <label
+      class="control-label required col-sm-12 col-form-label"
+      for="price"
+    >Стоимость товара</label
+    >
+    <br/>
+    <div class="col-sm-3">
+      <input
+        type="text"
+        class="form-control"
+        id="price"
+        placeholder="32 155"
+        formControlName="price"
+        required
+      />
+    </div>
+  </div>
+  <hr/>
+  <div class="form-group row ml-4">
+    <label
+      class="control-label required col-sm-12 col-form-label"
+      for="image"
+    >Изображение товара</label
+    >
+    <br/>
+    <div class="col-sm-3 ">
+      <div class="image input-group mt-3">
+        <input
+          type="text"
+          class="form-control"
+          id="image"
+          placeholder="Url image"
+          name="image"
+          formControlName="image"
           required
-          formControlName="textarea"
-          rows="5"
-          placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, architecto atque deserunt dolore, fugiat laudantium nihil perferendis porro quae, quasi qui quo sapiente vitae. Eius fugiat id itaque possimus sapiente!"
+        />
+        <a
+          href="https://www.google.com/imghp?hl=ru"
+          target="_blank"
+          class="btn btn-link  ml-2"
         >
+          <span> <i class="fas fa-download fa-lg"></i></span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <hr/>
+  <div id="descr" class="form-group row ">
+    <label class="control-label required col-sm-12 col-form-label pl-0">
+      Описание
+    </label>
+    <textarea
+      class="form-control col-sm-6"
+      id="example"
+      required
+      formControlName="textarea"
+      rows="5"
+      placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, architecto atque deserunt dolore, fugiat laudantium nihil perferendis porro quae, quasi qui quo sapiente vitae. Eius fugiat id itaque possimus sapiente!"
+    >
         </textarea>
-      </div>
-      <div class="form-row align-items-center">
-        <div class="col-auto my-1">
-          <label class="control-label col-sm-12 col-form-label">
-            Добавленные свойства
-            <button class="btn btn-link" (click)="onAddProps()">
+  </div>
+  <div class="form-row align-items-center">
+    <div class="col-12  ml-5  my-1">
+      <label class="control-label ">
+        Добавленные товару свойств
+      </label>
+      <button class="btn btn-link mb-4 " (click)="onAddProps()">
               <span>
-                <i class="fas fa-plus-circle fa-2x pl-2"></i>
+                <i class="fas fa-plus-circle fa-2x "></i>
               </span>
-            </button>
-          </label>
-          <div
-            formArrayName="props"
-            class="form-group "
-            *ngFor="
+      </button>
+    </div>
+    <div
+      formArrayName="props"
+      class="form-group mt-4"
+      *ngFor="
               let propControl of pForm.get('props').controls;
-              let i = index
-            "
-          >
-            <div [formGroupName]="i">
-              <select formControlName="name">
-                <option *ngFor="let prop of alowedProps" [ngValue]="prop.name">
-                  {{ prop.name }}
-                </option>
-              </select>
-              <input type="text" formControlName="value" />
-            </div>
-            <button class="btn btn-link" (click)="onDeleteProps(i)">
-              <span>
-                <i class="fas fa-minus-circle fa-2x pl-2"></i>
-              </span>
-            </button>
-          </div>
-        </div>
-        <hr />
+              let i = index "
+    >
+      <div class="row  mb-3 ">
+        <button class="btn btn-link mt-3 pl-2 "
+                (click)="onDeleteProps(i)">
+                 <span>
+                    <i class="fas fa-minus-circle fa-2x "></i>
+
+                  </span>
+        </button>
+        <p class=" ml-3">Свойство {{i+1}}</p>
+        <p class="value d-none d-md-block">Значение</p>
       </div>
-    </form>
+      <div [formGroupName]="i">
+        <select formControlName="name">
+          <option *ngFor="let prop of alowedProps"
+                  [ngValue]="prop.name">
+            {{ prop.name }}
+          </option>
+        </select>
+        <input id="propname" type="text" formControlName="value"/>
+      </div>
+    </div>
+    <hr/>
+  </div>
+</form>

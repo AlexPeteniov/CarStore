@@ -1,39 +1,44 @@
-<div class="container shadow rounded">
+<div class="d-block d-sm-none">
+  <p>At this screen width, the table is not available.
+    Please use another device or rotate the screen.</p>
+</div>
+<div class="container d-none d-sm-block">
   <div class="row ">
-    <div class="col-3 ml-auto">
+    <div class="offset-sm-5 col-sm-6 col-md-5 offset-md-7 mt-1">
       <div class="row justify-content-end">
-        <a class="btn btn-warning shadow  text-white rounded"
-           routerLink="/products/new">+ Добавить товар</a>
+        <a class="btn btn-warning text-white rounded"
+           routerLink="/products/new">Добавить товар</a>
       </div>
     </div>
   </div>
   <div class="row ">
-    <div class="info">
-      <div class="d-inline-block " appDropdown #r="appDropdown">
-        <a class="dropdown-toggle text-muted "
-           data-toggle="dropdown"
-           style="cursor: pointer"><b>Перечень товаров</b>
-          <span class="caret"></span></a>
-        <ul class=" dropdown-menu border-0 col-10  "
-            [ngClass]="{'show':r.isOpen}"
-            ng-click="event.stopPropagation()">
-          <li>
-            <app-product-item
-              *ngFor="let productEl of products; let i=index"
-              [product]="productEl"
-              [index]="i">
-            </app-product-item>
-          </li>
-        </ul>
-        <div class="d-inline-block ">
-          <p class="text-muted">Стоимость</p>
+    <div class="info ml-sm-0 ml-md-4 ml-lg-5">
+      <div class="d-inline-block  ">
+        <a id="product"
+           [class.active]="order === 'name'"
+           (click)="setOrder('name')"
+           style="cursor: pointer">
+          <i class="fas fa-angle-down"></i>
+          Перечень товаров</a>
+        <div class="d-inline-block text-muted  ">
+          <p>Стоимость</p>
         </div>
         <div class="d-inline-block text-muted ">
           <p class="date">Дата изменения</p>
         </div>
-        <div class="d-inline-block text-muted ">
-          <p class="control">Управление</p>
+        <div class="d-inline-block text-muted  ">
+          <p class="control ">Управление</p>
         </div>
+        <ul>
+          <li>
+            <app-product-item
+              *ngFor="let productEl of sortedProducts | orderBy: order : reverse : true ; let id=index"
+              (setOrder)="setOrder($event)"
+              [product]="productEl"
+              [index]="id">
+            </app-product-item>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

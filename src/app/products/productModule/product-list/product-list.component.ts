@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Product} from '../product.model';
 import {ProductService} from '../product.service';
 import {Subscription} from 'rxjs/Subscription';
+import {OrderPipe} from 'ngx-order-pipe';
 
 
 @Component({
@@ -12,28 +13,38 @@ import {Subscription} from 'rxjs/Subscription';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit, OnDestroy {
-
-  @Input() product: Product;
-  @Input() index: number;
+  @Input() product;
   products: Product[] = [];
+  sortedProducts: Product[] = [];
+  order = 'name';
+  reverse = false;
   private subscription: Subscription;
-
   constructor(private productService: ProductService,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private orderPipe: OrderPipe) {
+    this.products = this.productService.getProducts();
+    this.sortedProducts = orderPipe.transform(this.products, 'name');
   }
 
   ngOnInit() {
     this.subscription = this.productService.productsChanged
       .subscribe(
         (products: Product[]) => {
-          this.products = products;
+          this.sortedProducts = products;
         }
       );
-    this.products = this.productService.getProducts();
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  setOrder(value: string) {
+    if (this.order === value) {
+      this.reverse = !this.reverse;
+    }
+
+    this.order = value;
   }
 }

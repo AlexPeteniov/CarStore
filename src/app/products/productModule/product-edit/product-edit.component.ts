@@ -1,11 +1,11 @@
-import { Component, OnInit,Input } from '@angular/core';
-import { Product } from '../product.model';
-import { ProductService } from '../product.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {Product} from '../product.model';
+import {ProductService} from '../product.service';
 import {FormArray, FormBuilder, FormGroup,} from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+import {ToastrService} from 'ngx-toastr';
 import {ActivatedRoute, Router} from '@angular/router';
-import { Property } from '../../propertyModule/property.model';
-import { PropertyService } from '../../propertyModule/property.service';
+import {Property} from '../../propertyModule/property.model';
+import {PropertyService} from '../../propertyModule/property.service';
 
 @Component({
   selector: 'app-product-edit',
@@ -15,9 +15,9 @@ import { PropertyService } from '../../propertyModule/property.service';
 export class ProductEditComponent implements OnInit {
   @Input() index: number;
   @Input() pForm: FormGroup;
+  product: Product;
   props: FormArray;
   condition: boolean;
-
 
 
   constructor(
@@ -27,19 +27,31 @@ export class ProductEditComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private toastr: ToastrService
-  ) {}
+  ) {
+  }
 
   alowedProps: Property[] = this.propertyService.getPropertys();
 
   ngOnInit() {
     this.condition = true;
-    this.pForm = this.fb.group({
-      name: [''],
-      price: [''],
-      image: [''],
-      textarea: [''],
-      props: this.fb.array([this.createProp('Цвет авто')]),
-    });
+    this.product = this.productService.getProduct() || null;
+    if (this.product) {
+      this.pForm = this.fb.group({
+        name: [this.product.name],
+        price: [this.product.price],
+        image: [this.product.image],
+        textarea: [this.product.textarea],
+        props: this.fb.array([this.createProp('Цвет авто')]),
+      });
+    } else {
+      this.pForm = this.fb.group({
+        name: [''],
+        price: [''],
+        image: [''],
+        textarea: [''],
+        props: this.fb.array([this.createProp('Цвет авто')]),
+      });
+    }
     this.pForm.valueChanges.subscribe(newVal => console.log(newVal));
   }
 
@@ -59,10 +71,13 @@ export class ProductEditComponent implements OnInit {
       value.textarea,
       value.props
     );
+    const i = this.productService.getProducts().indexOf(this.product);
+    this.productService.deleteProduct(i);
     this.productService.addProduct(newProduct);
     this.toastr.success('Продукт добавлено успешно!', 'Toastr message!', {
       positionClass: 'toast-top-center',
     });
+    this.router.navigate(['/products']);
   }
 
   onAddProps() {
@@ -74,7 +89,8 @@ export class ProductEditComponent implements OnInit {
     (<FormArray>this.pForm.get('props')).removeAt(index);
     this.pForm.removeControl('select');
   }
-  onBack(){
+
+  onBack() {
     this.router.navigate(['/products']);
   }
 }
