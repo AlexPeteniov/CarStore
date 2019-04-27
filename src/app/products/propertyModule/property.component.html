@@ -1,35 +1,46 @@
 <app-header></app-header>
-<div class="container shadow rounded">
+<div class="d-block d-sm-none">
+  <p>At this screen width, the table is not available.
+    Please use another device or rotate the screen.</p>
+</div>
+<div class="container d-none d-sm-block ">
   <div class="row ">
-    <div class="offset-8 col-3  mt-1">
+    <div class="offset-sm-5 col-sm-6 col-lg-3 offset-lg-8 mt-4">
       <div class="row justify-content-end">
-        <a class="btn btn-warning  shadow text-white rounded"
-           routerLink="/property/edit">+ Добавить проперти</a>
+        <a class="btn text-white "
+           routerLink="/property/edit"> Добавить проперти</a>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="d-inline-block col-12  " appDropdown #r="appDropdown">
-      <a class="dropdown-toggle text-muted col-5  "
-         data-toggle="dropdown"
-         style="cursor: pointer"><b>Перечень проперти</b>
-        <span class="caret"></span></a>
-
-      <ul class=" dropdown-menu border-0 col-9   "
-          [ngClass]="{'show':r.isOpen}"
-          ng-click="event.stopPropagation()">
-        <li class="">
-          <app-detail *ngFor="let propertyEl of propertys; let i = index"
+  <div class="row ">
+    <div class=" col-12 mb-4 mb-md-0  mt-md-4 ml-md-3 ml-lg-5 ">
+      <!--appDropdown #r="appDropdown">-->
+      <a class="col-1 col-md-5 ml-md-4"
+         [class.active]="order === 'name'"
+         (click)="setOrder('name')"
+         style="cursor: pointer">
+        <i class="fas fa-angle-down"></i>
+        Перечень проперти</a>
+      <div class="d-inline-block col-sm-1 ml-0 pl-0 col-lg-3 ml-lg-5
+            pl-lg-4 offset-lg-2 text-muted">
+        <p class="type">Тип</p>
+      </div>
+      <div class="d-inline-block
+      col-sm-1  offset-sm-0
+      col-md-3 offset-md-1 text-muted ">
+        <p class="control">Управление</p>
+      </div>
+      <ul class=" border-0 col-12 col-md-10  mb-md-2">
+        <!--[ngClass]="{'show':r.isOpen}"
+        ng-click="event.stopPropagation()"-->
+        <li class=" ">
+          <app-detail *ngFor="let propertyEl of sortedPropertys| orderBy: order : reverse : true ; let i=index"
+                      (setOrder)="setOrder($event)"
                       [property]="propertyEl"
                       [index]="i">
           </app-detail>
+        </li>
       </ul>
-      <div class="d-inline-block col-3 offset-2 text-muted">
-        <p class="type">Тип</p>
-      </div>
-      <div class="d-inline-block   col-3 offset-1 text-muted  ">
-        <p class="control">Управление</p>
-      </div>
     </div>
   </div>
 </div>

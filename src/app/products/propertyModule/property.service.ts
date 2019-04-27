@@ -20,8 +20,8 @@ export class PropertyService {
     this.propertys.push(property);
   }
 
-  deleteProperty(index: number) {
-    this.propertys.splice(index, 1);
+  deleteProperty(id: number) {
+    this.propertys.splice(id, 1);
     this.propertysChanged.next(this.propertys.slice());
   }
 }

@@ -32,5 +32,10 @@ export class EditComponent implements OnInit {
     const newProperty = new Property(value.name, value.type, value.id);
     this.propertyService.addProperty(newProperty);
     this.toastr.success('Проперти добавлено успешно!', 'Toastr message!', {positionClass: 'toast-top-center'});
+    this.router.navigate(['/property']);
+  }
+
+  onBack() {
+    this.router.navigate(['/property']);
   }
 }

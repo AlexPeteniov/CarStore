@@ -2,11 +2,14 @@
   <div class="col-12">
     <form [formGroup]="propForm">
       <div class="form-group row mt-4">
-        <div class="col-sm-8"></div>
-        <div class="col-sm-2">
-          <a class="btn btn-danger btn-block" routerLink="/property">Вернуться</a>
+        <div class="col-sm-none col-lg-7"></div>
+        <div class="col-12 col-md-3 col-lg-2 mr-4">
+          <button
+            class="btn btn-danger"
+            (click)="onBack()">Вернуться
+          </button>
         </div>
-        <div class="col-sm-2">
+        <div class="col-12 col-md-3 col-lg-2">
           <button
             class="btn btn-success"
             type="submit"
