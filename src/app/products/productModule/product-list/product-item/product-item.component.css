@@ -1,1 +1,1 @@
-p{  color: black;}a.name:hover {  text-decoration: underline ;}
+p {  color: black;  font-size: 14px;}a.name {  text-decoration: underline;  font-size: 14px;}button {  font-size: 14px;}button.edit {  padding-left: 75px;}@media (min-width: 768px) and (max-width: 992px) {  button.edit {    padding-left: 10px;  }}@media (min-width: 576px) and (max-width: 768px) {  button.edit {    padding-left: 0px;  }}hr {  border: 1px solid #F7F9FA;}

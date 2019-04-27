@@ -29,7 +29,7 @@ import { RadioComponent } from './ui components/radio/radio.component';
 import { ButtonComponent } from './ui components/button/button.component';
 import {AuthService} from './auth.service';
 import { SharedModule } from './shared/shared.module';
-import { OrderByPipe } from './shared/order-by.pipe';
+import { OrderModule } from 'ngx-order-pipe';
 
 
 @NgModule({
@@ -50,7 +50,6 @@ import { OrderByPipe } from './shared/order-by.pipe';
     AppInputComponent,
     RadioComponent,
     ButtonComponent,
-    OrderByPipe,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +61,8 @@ import { OrderByPipe } from './shared/order-by.pipe';
     CommonModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    SharedModule
+    SharedModule,
+    OrderModule
   ],
   providers: [PropertyService, ProductService, AuthService],
   bootstrap: [AppComponent]
