@@ -63,11 +63,10 @@ export class ProductService {
       ]
     ),
     new Product(
-      'bmw',
+      'BMW',
       '500 000 $',
-      'https://icdn.lenta.ru/images/2017' +
-      '/02/13/11/20170213112429057/pic_0' +
-      '9b260bf45db3a5dc09c9f56080d6ebb.jpg',
+      'https://bmw-baltauto.ru/upload/iblock/' +
+      '21d/21d461c79d261063b714a2cf6724d5c3.png',
       'Очень красивый цвет (сине-зелено-фиолетовый) перламутр,' +
       ' богатая комплектация Privilege, заводской адаптивный Xenon,' +
       ' комбинированный салон(кожа-велюр),кожаный руль,' +
@@ -97,10 +96,6 @@ export class ProductService {
   getProductById(index: number) {
     return this.products[index];
   }
-  getProductByName(name: string) {
-    return this.products[name];
-  }
-
   putProduct(product: Product) {
     this.product = product;
   }

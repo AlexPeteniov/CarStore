@@ -16,7 +16,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   @Input() product;
   products: Product[] = [];
   sortedProducts: Product[] = [];
-  order = 'name';
+  order = 'product.name';
   reverse = false;
   private subscription: Subscription;
   constructor(private productService: ProductService,
@@ -24,7 +24,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
               private route: ActivatedRoute,
               private orderPipe: OrderPipe) {
     this.products = this.productService.getProducts();
-    this.sortedProducts = orderPipe.transform(this.products, 'name');
+    this.sortedProducts = orderPipe.transform(this.products, 'product.name');
   }
 
   ngOnInit() {

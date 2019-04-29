@@ -14,10 +14,10 @@ import {OrderPipe} from 'ngx-order-pipe';
 export class ProductItemComponent implements OnInit {
   @Input() id: number;
   @Input() index: number;
+  @Input() name: string;
   @Input() product: Product;
   @Input() pForm: FormGroup;
   sortedCollection: any[];
-
 
   constructor(private productService: ProductService,
               private router: Router,
@@ -36,7 +36,6 @@ export class ProductItemComponent implements OnInit {
     this.productService.deleteProduct(this.productService.getProducts().indexOf(this.product));
     this.toastr.warning('Продукт удален успешно!', 'Toastr message!', {positionClass: 'toast-top-center'});
   }
-
   productEdit(product: Product, index) {
     this.productService.putProduct(product)
     this.router.navigate(['/products/new']);

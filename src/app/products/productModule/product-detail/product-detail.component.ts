@@ -4,24 +4,24 @@ import {Product} from '../product.model';
 import {ProductService} from '../product.service';
 import {ToastrService} from 'ngx-toastr';
 
-
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css']
 })
+
 export class ProductDetailComponent implements OnInit {
   product: Product;
-  pname: string;
+  index: string;
+
   constructor(private productService: ProductService,
               private route: ActivatedRoute,
               private toastr: ToastrService) {
   }
 
   ngOnInit() {
-    this.pname = this.route.snapshot.params['product.name'];
-    console.log(this.pname);
-    this.product = this.productService.getProductByName(this.pname);
+    this.index = this.route.snapshot.params['id'];
+    this.product = this.productService.getProductById(this.index);
   }
 
   onSubmit() {
