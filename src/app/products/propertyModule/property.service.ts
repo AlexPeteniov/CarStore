@@ -7,13 +7,17 @@ import {Subject} from 'rxjs/Subject';
 export class PropertyService {
   propertysChanged = new Subject<Property[]>();
   private propertys: Property [] = [
-    new Property('Цвет авто', 'dropdown', 'nameColor'),
-    new Property('Год выпуска', 'number', 'dateAdd'),
-    new Property('Тип топлива', 'string', 'typeGas')
+    new Property('Цвет авто', 'dropdown', 'nameColor', 0),
+    new Property('Год выпуска', 'number', 'dateAdd', 1),
+    new Property('Тип топлива', 'string', 'typeGas', 2)
   ];
 
   getPropertys() {
     return this.propertys.slice();
+  }
+
+  getNextI() {
+    return this.propertys.length;
   }
 
   addProperty(property: Property) {

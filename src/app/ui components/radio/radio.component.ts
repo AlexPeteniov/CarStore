@@ -8,10 +8,14 @@ import { FormGroup, FormControl, Validators} from '@angular/forms';
 })
 export class RadioComponent implements OnInit {
   @Input() propForm: FormGroup;
+  @Input() class: string;
   type = new FormControl('');
   constructor() { }
 
   ngOnInit() {
+    this.propForm = new FormGroup({
+      name: new FormControl('', Validators.required),
+      type: new FormControl('', Validators.required),
+    });
   }
-
 }

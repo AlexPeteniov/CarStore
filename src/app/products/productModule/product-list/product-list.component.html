@@ -32,13 +32,15 @@
         <ul>
           <li>
             <app-product-item
-              *ngFor="let productEl of sortedProducts | orderBy: order : reverse : true ; let id=index"
+              *ngFor="let productEl of paginatedProducts(sortedProducts) | orderBy: order : reverse : true"
               (setOrder)="setOrder($event)"
               [product]="productEl"
-              [index]="id">
+              [index]="productEl.id">
             </app-product-item>
           </li>
         </ul>
+        <button (click)="previousPage()"><</button>
+        <button (click)="nextPage()">></button>
       </div>
     </div>
   </div>

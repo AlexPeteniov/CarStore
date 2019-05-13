@@ -8,6 +8,7 @@ export class ProductService {
   private product: Product;
   private products: Product[] = [
     new Product(
+      0,
       'Corvette_zr1',
       '500 260 $',
       'https://img4.dp.ru/images/article/2017/' +
@@ -37,6 +38,7 @@ export class ProductService {
       ]
     ),
     new Product(
+      1,
       'AUDI',
       '500 000 $',
       'https://icdn.lenta.ru/images/2017' +
@@ -63,6 +65,7 @@ export class ProductService {
       ]
     ),
     new Product(
+      2,
       'BMW',
       '500 000 $',
       'https://bmw-baltauto.ru/upload/iblock/' +
@@ -93,11 +96,15 @@ export class ProductService {
     return this.products.slice();
   }
 
-  getProductById(index: number) {
-    return this.products[index];
+  getProductById(id: number) {
+    return this.products.filter(product => product.id === id)[0];
   }
   putProduct(product: Product) {
     this.product = product;
+  }
+
+  getNextId() {
+    return this.products.length;
   }
 
   getProduct(): Product {

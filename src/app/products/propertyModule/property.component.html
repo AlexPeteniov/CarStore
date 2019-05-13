@@ -37,7 +37,7 @@
           <app-detail *ngFor="let propertyEl of sortedPropertys| orderBy: order : reverse : true ; let i=index"
                       (setOrder)="setOrder($event)"
                       [property]="propertyEl"
-                      [index]="i">
+                      [index]="propertyEl.i">
           </app-detail>
         </li>
       </ul>

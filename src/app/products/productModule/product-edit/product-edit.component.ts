@@ -65,6 +65,7 @@ export class ProductEditComponent implements OnInit {
   onSubmit(form: FormGroup = this.pForm) {
     const value = form.value;
     const newProduct = new Product(
+      this.productService.getNextId(),
       value.name,
       value.price,
       value.image,
@@ -72,7 +73,9 @@ export class ProductEditComponent implements OnInit {
       value.props
     );
     const i = this.productService.getProducts().indexOf(this.product);
-    this.productService.deleteProduct(i);
+    if (i !== -1) {
+      this.productService.deleteProduct(i);
+    }
     this.productService.addProduct(newProduct);
     this.toastr.success('Продукт добавлено успешно!', 'Toastr message!', {
       positionClass: 'toast-top-center',
@@ -86,7 +89,7 @@ export class ProductEditComponent implements OnInit {
   }
 
   onDeleteProps(index: number) {
-    (<FormArray>this.pForm.get('props')).removeAt(index);
+    (this.pForm.get('props') as FormArray).removeAt(index);
     this.pForm.removeControl('select');
   }
 

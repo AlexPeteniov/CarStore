@@ -18,6 +18,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
   sortedProducts: Product[] = [];
   order = 'product.name';
   reverse = false;
+  page = 1;
+  count = 2;
   private subscription: Subscription;
   constructor(private productService: ProductService,
               private router: Router,
@@ -46,5 +48,19 @@ export class ProductListComponent implements OnInit, OnDestroy {
     }
 
     this.order = value;
+  }
+
+  paginatedProducts(products) {
+    const currentIndex = (this.page - 1) * this.count;
+    return products.slice(currentIndex, currentIndex + this.count);
+  }
+
+  previousPage() {
+    this.page = this.page !== 1 ? this.page - 1 : 1;
+  }
+
+  nextPage() {
+    const all = this.productService.getProducts().length;
+    this.page += this.page === Math.floor(all / this.count) + 1 ? 0 : 1;
   }
 }

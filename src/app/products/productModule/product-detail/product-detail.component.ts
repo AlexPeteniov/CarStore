@@ -12,7 +12,7 @@ import {ToastrService} from 'ngx-toastr';
 
 export class ProductDetailComponent implements OnInit {
   product: Product;
-  index: string;
+  index: number;
 
   constructor(private productService: ProductService,
               private route: ActivatedRoute,
@@ -20,7 +20,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.index = this.route.snapshot.params['id'];
+    this.index = Number(this.route.snapshot.params['id']);
     this.product = this.productService.getProductById(this.index);
   }
 
