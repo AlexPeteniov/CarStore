@@ -23,7 +23,6 @@ export class DetailComponent implements OnInit {
   }
 
   onDelete() {
-    /*this.propertyService.deleteProperty(this.propertyService.getPropertys().indexOf(this.property));*/
     this.propertyService.deleteProperty(this.index);
     console.log(this.index);
     this.toastr.warning('Проперти удалено успешно!', 'Toastr message!', {positionClass: 'toast-top-center'});

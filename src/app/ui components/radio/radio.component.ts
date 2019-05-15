@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormControl, Validators} from '@angular/forms';
+import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-radio',
@@ -7,15 +7,13 @@ import { FormGroup, FormControl, Validators} from '@angular/forms';
   styleUrls: ['./radio.component.css']
 })
 export class RadioComponent implements OnInit {
-  @Input() propForm: FormGroup;
+  @Input() parentGroup: FormGroup;
   @Input() class: string;
-  type = new FormControl('');
+  @Input() type: string;
+  @Input() value: string;
+  @Input() text: string;
   constructor() { }
 
   ngOnInit() {
-    this.propForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-      type: new FormControl('', Validators.required),
-    });
   }
 }

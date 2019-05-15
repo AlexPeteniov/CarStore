@@ -33,8 +33,8 @@
       <ul class=" border-0 col-12 col-md-10  mb-md-2">
         <!--[ngClass]="{'show':r.isOpen}"
         ng-click="event.stopPropagation()"-->
-        <li class=" ">
-          <app-detail *ngFor="let propertyEl of sortedPropertys| orderBy: order : reverse : true ; let i=index"
+        <li>
+          <app-detail *ngFor="let propertyEl of sortedPropertys| orderBy: order : reverse : true;"
                       (setOrder)="setOrder($event)"
                       [property]="propertyEl"
                       [index]="propertyEl.i">

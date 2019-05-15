@@ -1,7 +1,12 @@
-<div class="radio" [formGroup]="propForm">
-  <input
-    formControlName="type"
-    [class]="class"
-    type="type"
-  >
+<div [formGroup]="parentGroup">
+  <input class="form-check-input"
+         type="radio"
+         name="type"
+         id="type"
+         value={{value}}
+         formControlName="type"
+         checked>
+  <label class="form-check-label">
+    {{text}}
+  </label>
 </div>
